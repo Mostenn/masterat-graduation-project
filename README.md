@@ -9,16 +9,16 @@
 ---
 
 *1.* List of apps with same functionality, and type of liscense.
-* [ ] Task done
+* [x] Task done
     - [Jira](https://www.atlassian.com/software/jira) ``Free up to 10 users ``
     - [Asana](https://asana.com/) ``Free up to 15 teammates ``
     - [Trello](https://trello.com/) ``Free 10 team dashboards``
-    - [Odoo soft ?](https://www.odoo.com/page/timesheet-mobile-app) ```???```
+    - [~~Odoo soft~~ ?](https://www.odoo.com/page/timesheet-mobile-app) ```???  <- Will not be taken as an example.```
 
 ---
 
-*2.* Application design
-* [ ] Task done
+*__2.__* __Application design__
+* [ ] __Task done__
 
     *2.1* Creating UML diagram
     * [ ] Task done
