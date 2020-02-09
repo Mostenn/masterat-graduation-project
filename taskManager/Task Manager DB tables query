@@ -1,0 +1,116 @@
+create schema task_data;
+
+create schema user_data;
+
+create table if not exists task_data.tasks
+(
+    id               bigserial not null
+        constraint tasks_pk
+            primary key,
+    status           integer   not null,
+    task_description varchar(400),
+    creator          bigint    not null,
+    executor         bigint,
+    task_type        bigint,
+    date_created     date      not null,
+    date_closed      date,
+    estimated_date   date
+);
+
+alter table task_data.tasks
+    owner to postgres;
+
+create table if not exists user_data.users
+(
+    id             bigserial not null
+        constraint users_pk
+            primary key,
+    first_name     varchar(80),
+    last_name      varchar(80),
+    department_id  varchar(150),
+    work_position  varchar(150),
+    email          varchar(100),
+    personal_phone varchar(30),
+    role           integer
+);
+
+alter table user_data.users
+    owner to postgres;
+
+create table if not exists user_data.departments
+(
+    id                bigserial    not null
+        constraint departments_pk
+            primary key,
+    name              varchar(200) not null,
+    phone_value       varchar(25),
+    additional_phones varchar(100)
+);
+
+alter table user_data.departments
+    owner to postgres;
+
+create table if not exists task_data.tasks_to_users
+(
+    task_id bigserial not null
+        constraint tasks_to_users_task_id_fkey
+            references task_data.tasks,
+    user_id bigserial not null
+        constraint tasks_to_users_user_id_fkey
+            references user_data.users
+);
+
+alter table task_data.tasks_to_users
+    owner to postgres;
+
+create table if not exists task_data.assistants_to_tasks
+(
+    assistant_id bigserial not null
+        constraint assistants_to_tasks_assistant_id_fkey
+            references user_data.users,
+    task_id      bigserial not null
+        constraint assistants_to_tasks_task_id_fkey
+            references task_data.tasks
+);
+
+alter table task_data.assistants_to_tasks
+    owner to postgres;
+
+create table if not exists task_data.task_types
+(
+    id   bigserial not null
+        constraint task_types_pk
+            primary key,
+    name varchar(100)
+);
+
+alter table task_data.task_types
+    owner to postgres;
+
+create table if not exists task_data.tasks_to_types
+(
+    task_id bigserial not null
+        constraint tasks_to_types_task_id_fkey
+            references task_data.tasks,
+    type_id bigserial not null
+        constraint tasks_to_types_type_id_fkey
+            references task_data.task_types
+);
+
+alter table task_data.tasks_to_types
+    owner to postgres;
+
+create table if not exists user_data.users_to_departments
+(
+    department_id bigint
+        constraint users_to_departments_department_id_fkey
+            references user_data.departments,
+    user_id       bigint
+        constraint users_to_departments_user_id_fkey
+            references user_data.users
+);
+
+alter table user_data.users_to_departments
+    owner to postgres;
+
+

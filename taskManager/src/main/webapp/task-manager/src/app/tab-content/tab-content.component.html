@@ -1,0 +1,36 @@
+<div style="padding: 0 10px 10px 10px">
+  <mat-accordion class="example-headers-align">
+
+    <div *ngFor="let task of tasks">
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Day of the trip
+          </mat-panel-title>
+          <mat-panel-description>
+            Inform the date you wish to travel
+            <mat-icon>date_range</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" (focus)="picker.open()">
+        </mat-form-field>
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>event_note</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-action-row>
+          <button mat-button color="warn" (click)="completeTask()">Complete</button>
+          <button mat-button color="primary" (click)="commentTask()">Comment</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </div>
+
+
+  </mat-accordion>
+</div>
+
+

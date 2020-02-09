@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>TaskManager LOGO</span>
+    <span class="example-spacer"></span>
+    <nav mat-tab-nav-bar [color]="color">
+      <a mat-tab-link ><span matBadge="4" matBadgeOverlap="false" matBadgeColor="warn">All tasks</span></a>
+      <a mat-tab-link ><span matBadge="4" matBadgeOverlap="false" matBadgeColor="primary">In Progress</span></a>
+      <a mat-tab-link>Done</a>
+    </nav>
+    <span class="example-spacer"></span>
+    <button mat-icon-button aria-label="Example icon-button with a heart icon" matTooltip="Manual">
+      <mat-icon>info</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Example icon-button with a heart icon" matTooltip="Logout">
+      <mat-icon>input</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
