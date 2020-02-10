@@ -3,6 +3,7 @@
 ###### Development of a WEB application for time management in an IT organization.
 ###### (Разработка WEB-приложения по тайм-менеджменту для IT организации.)
 
+## [Trello board for this project !!!](https://trello.com/invite/b/vVS1mphf/33a7265daa2fa082534d6609a274477f/task-manger-graduation-project)
 ---
 ###### Useful links
 - [18 Best Time Management Apps and Tools (2019 Updated)](https://www.lifehack.org/articles/technology/top-15-time-management-apps-and-tools.html)
