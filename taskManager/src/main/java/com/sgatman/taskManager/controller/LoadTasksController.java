@@ -19,12 +19,18 @@ public class LoadTasksController {
 
     @PostMapping("/tasks")
     public void addTask(@RequestBody Task task){
-        taskRepository.save(task);
+        if (task.getId() == null)
+            taskRepository.save(task);
     }
 
-    @DeleteMapping("/tasks/{id}")
-    public void removeTask(@RequestBody Task task){
-        taskRepository.delete(task);
+    @PutMapping("/tasks")
+    public void changeTask(@RequestBody Task task){
+        if (taskRepository.findById(task.getId()).isPresent())
+            taskRepository.save(task);
+    }
+    @DeleteMapping("tasks/{taskId}")
+    public void removeTask(@PathVariable Long taskId){
+        taskRepository.deleteById(taskId);
     }
 
 }

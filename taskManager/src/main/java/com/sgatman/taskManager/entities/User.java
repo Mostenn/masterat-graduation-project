@@ -5,13 +5,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
 @Table(name = "users", schema = "user_data")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +37,6 @@ public class User {
     private String personalPhone;
 
     @Column(name = "role")
-    private String role;
-
+    private Integer role;
 
 }

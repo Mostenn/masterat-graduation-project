@@ -5,7 +5,6 @@ import com.sgatman.taskManager.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @RestController
 public class AllUsersController {
@@ -14,18 +13,25 @@ public class AllUsersController {
     private UserRepository userRepository;
 
     @GetMapping("/users")
-    public List<User> allUsers(){
-        return (List<User>) userRepository.findAll();
+    public Iterable<User> allUsers(){
+        return userRepository.findAll();
     }
 
     @PostMapping("/users")
-    public void createUser(@RequestBody User user){
-        userRepository.save(user);
+    public void createUser(@RequestBody User user) {
+        if(user.getId() == null)
+            userRepository.save(user);
     }
 
-    @DeleteMapping("/users/{id}")
-    public void removeUser(@RequestBody User user){
-        userRepository.delete(user);
+    @PutMapping("/users")
+    public void updateUser(@RequestBody User user){
+        if (userRepository.findById(user.getId()).isPresent())
+            userRepository.save(user);
+    }
+
+    @DeleteMapping("/users/{userId}")
+    public void removeUser(@PathVariable Long userId){
+        userRepository.deleteById(userId);
     }
 
 }
