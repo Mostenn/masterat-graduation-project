@@ -1,0 +1,35 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description{
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description{
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field{
+  margin-left: 8px;
+}
+.mat-expansion-panel{
+  margin: 5px 0;
+}
+
+.task-creator{
+  font-size: .7em;
+}
+
+.chip-data-info{
+  font-size: .7em
+}
+
+.full-width{
+  width: 100%;
+}
+
+/*
+.green-border{
+  border-left: 2px solid green;
+  border-right: 2px solid green;
+}
+*/
