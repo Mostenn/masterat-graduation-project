@@ -1,7 +1,6 @@
 package com.sgatman.taskManager.repository;
 
-import com.sgatman.taskManager.entities.Task;
-import org.springframework.data.repository.CrudRepository;
-
-public interface TaskRepository extends CrudRepository<Task, Long> {
+import com.sgatman.taskManager.configs.ApplicationRepository;
+import com.sgatman.taskManager.entities.TaskEntity;
+public interface TaskRepository extends ApplicationRepository<TaskEntity, Long> {
 }

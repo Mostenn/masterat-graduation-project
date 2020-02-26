@@ -1,7 +1,7 @@
 package com.sgatman.taskManager.repository;
 
-import com.sgatman.taskManager.entities.User;
-import org.springframework.data.repository.CrudRepository;
+import com.sgatman.taskManager.entities.UserEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 }

@@ -10,7 +10,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "departments", schema = "user_data")
-public class Department {
+public class DepartmentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +29,6 @@ public class Department {
     @JoinTable(name = "users_to_departments",
             joinColumns = {@JoinColumn(name = "department_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
-    private Set<User> users;
+    private Set<UserEntity> users;
 
 }

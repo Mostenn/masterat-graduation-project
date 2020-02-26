@@ -1,5 +1,6 @@
 package com.sgatman.taskManager.entities;
 
+import com.sgatman.taskManager.Views.UserView;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +13,7 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @Table(name = "users", schema = "user_data")
-public class User implements Serializable {
+public class UserEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,5 +39,11 @@ public class User implements Serializable {
 
     @Column(name = "role")
     private Integer role;
+
+    public UserEntity(UserView userView){
+        this.id = userView.getId();
+        this.firstName = userView.getFName();
+        this.lastName = userView.getLName();
+    }
 
 }

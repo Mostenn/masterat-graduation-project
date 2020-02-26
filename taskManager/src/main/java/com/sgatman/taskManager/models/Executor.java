@@ -1,8 +1,8 @@
 package com.sgatman.taskManager.models;
 
-import com.sgatman.taskManager.entities.User;
+import com.sgatman.taskManager.entities.UserEntity;
 
-public class Executor extends User {
+public class Executor extends UserEntity {
 
 
 }
