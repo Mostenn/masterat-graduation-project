@@ -9,7 +9,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ProfileEditDialogComponent } from './tool-bar/profile-edit-dialog/profile-edit-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field'; 
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -26,6 +26,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatDialogModule,
     MatFormFieldModule
   ],
+  entryComponents: [ ProfileEditDialogComponent ],
   exports: [ToolBarComponent]
 })
 export class ToolBarModule { }

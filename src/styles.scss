@@ -1,42 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
 
-.mat-tab-nav-bar.mat-primary .mat-ink-bar{
-    background-color: #ffffff;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #ffffff;
+}
+
 /*Todo make for each type of task create color*/
-mat-expansion-panel{
-    border-left: 2px solid #ff4081;
-    border-right: 2px solid #ff4081;
+mat-expansion-panel {
+  border-left: 2px solid #ff4081;
+  border-right: 2px solid #ff4081;
 }
-.mat-ripple-element{
-    background-color: #ffffff20;
+
+.mat-ripple-element {
+  background-color: #ffffff20;
 }
-mat-panel-description.mat-expansion-panel-header-description{
-    flex-grow: 5;
+
+mat-panel-description.mat-expansion-panel-header-description {
+  flex-grow: 5;
 }
-.tab-content-container{
+
+.tab-content-container {
   position: relative;
   max-height: calc(100vh - 120px);
   overflow: auto;
 }
-mat-panel-title{
+
+mat-panel-title {
   align-self: center;
 }
-mat-chip-list{
+
+mat-chip-list {
   flex-grow: 1;
+  justify-content: start;
 }
-.panel-header-icon{
+
+.panel-header-icon {
   align-self: center;
   width: 26px;
   height: 26px;
   font-size: 26px;
-  color: rgba(0,0,0,.54);
+  color: rgba(0, 0, 0, .54);
 }
-app-footer{
-  .mat-toolbar-row, .mat-toolbar-single-row{
+
+app-footer {
+  .mat-toolbar-row, .mat-toolbar-single-row {
     justify-content: space-between;
-    }
+  }
+}
+
+.no-resize{
+  textarea{
+    resize: none !important;
+  }
+}
+
+.align-right{
+  text-align: right;
 }

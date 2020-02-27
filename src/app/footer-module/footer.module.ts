@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from './footer.component';
-import { PaginatorComponent } from './paginator/paginator.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,11 +11,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FooterComponent } from './footer.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { CreateTaskDialogComponent } from './create-task-dialog/create-task-dialog.component';
 
 
 
 @NgModule({
-  declarations: [FooterComponent,PaginatorComponent],
+  declarations: [FooterComponent, PaginatorComponent, CreateTaskDialogComponent, CreateTaskDialogComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -30,11 +32,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatNativeDateModule,
     MatPaginatorModule,
     MatChipsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
   ],
+  entryComponents:[ CreateTaskDialogComponent ],
   exports: [
+    CreateTaskDialogComponent,
     FooterComponent,
-    PaginatorComponent
+    PaginatorComponent,
   ]
 })
 export class FooterModule { }

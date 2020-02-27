@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>TaskManager LOGO</span>
+    <span class="example-spacer"></span>
+
+    <nav mat-tab-nav-bar [backgroundColor]="background">
+        <a mat-tab-link *ngFor="let link of links"
+            (click)="activeLink = link"
+            [active]="activeLink == link"
+            matRippleColor="#fff"> <span matBadge="4" matBadgeOverlap="false" matBadgeColor="accent">{{link}}</span></a>
+    </nav>
+    <span class="example-spacer"></span>
+    <button (click)="openProfileDialog()" mat-icon-button aria-label="Example icon-button with a heart icon"
+      matTooltip="Profile">
+      <mat-icon>info</mat-icon>
+    </button>
+    <button (click)="openHelpBtn()" mat-icon-button aria-label="Example icon-button with a heart icon"
+      matTooltip="Manual">
+      <mat-icon>help_outline</mat-icon>
+    </button>
+    <button (click)="onLogout()" style="margin-left: 10px;" mat-icon-button
+      aria-label="Example icon-button with a heart icon" matTooltip="Logout">
+      <mat-icon>input</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

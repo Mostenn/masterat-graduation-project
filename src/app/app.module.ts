@@ -8,7 +8,7 @@ import { ToolBarModule } from './tool-bar-module/tool-bar.module';
 import { TabContentModule } from './tab-content-module/tab-content.module';
 import { FooterModule } from './footer-module/footer.module';
 import { MatTabsModule } from '@angular/material/tabs';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [

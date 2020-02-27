@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import {CreateTaskDialogComponent} from "./create-task-dialog/create-task-dialog.component";
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
+      minWidth: '80vw'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
