@@ -12,30 +12,36 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 import { FooterComponent } from './footer.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { CreateTaskDialogComponent } from './create-task-dialog/create-task-dialog.component';
+import {CreateTaskDialogService} from "./create-task-dialog/create-task-dialog.service";
+import {FormsModule} from "@angular/forms";
 
 
 
 @NgModule({
   declarations: [FooterComponent, PaginatorComponent, CreateTaskDialogComponent, CreateTaskDialogComponent],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTooltipModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatChipsModule,
-    MatToolbarModule,
-    MatDialogModule
-  ],
+            imports: [
+              CommonModule,
+              MatIconModule,
+              MatButtonModule,
+              MatTooltipModule,
+              MatExpansionModule,
+              MatFormFieldModule,
+              MatDatepickerModule,
+              MatInputModule,
+              MatNativeDateModule,
+              MatPaginatorModule,
+              MatChipsModule,
+              MatToolbarModule,
+              MatDialogModule,
+              MatSelectModule,
+              FormsModule
+            ],
   entryComponents:[ CreateTaskDialogComponent ],
+  providers: [CreateTaskDialogService],
   exports: [
     CreateTaskDialogComponent,
     FooterComponent,

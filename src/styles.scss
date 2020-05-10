@@ -15,8 +15,9 @@ body {
 
 /*Todo make for each type of task create color*/
 mat-expansion-panel {
-  border-left: 2px solid #ff4081;
-  border-right: 2px solid #ff4081;
+  border-left: 5px solid;
+  border-right: 5px solid;
+  border-radius: 4px !important;
 }
 
 .mat-ripple-element {

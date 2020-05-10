@@ -14,6 +14,12 @@ export class TaskDto {
     }
 }
 
+export interface TaskDto{
+  description: string;
+  estimatedDate: Date;
+  taskType: SimpleDto;
+}
+
 
 export class SimpleDto {
     label: number;

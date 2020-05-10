@@ -10,14 +10,11 @@ import { ProfileEditDialogComponent } from './profile-edit-dialog/profile-edit-d
 })
 export class ToolBarComponent implements OnInit {
 
-  @Input() backgroundColor: ThemePalette = "primary";
-  @Input() color: ThemePalette;
-  isIconButton: boolean;
 
   links = [ 'All Tasks', 'In progress', 'Done'];
   activeLink = this.links[0];
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) { }
 
   openProfileDialog(): void {
     const dialogRef = this.dialog.open(ProfileEditDialogComponent, {
@@ -33,7 +30,6 @@ export class ToolBarComponent implements OnInit {
 
   openHelpBtn(){
     // open pdf manual
-    window.open('www.google.com', '_blank');
   }
 
   onLogout(){}

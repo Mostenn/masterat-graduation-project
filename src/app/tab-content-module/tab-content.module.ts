@@ -15,27 +15,29 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { TabContentService } from './tab-content/tab-content.service';
 import { TabContentComponent } from './tab-content/tab-content.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 
 
 @NgModule({
   declarations: [TabContentComponent],
-    imports: [
-        CommonModule,
-        MatIconModule,
-        MatButtonModule,
-        MatTooltipModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatInputModule,
-        MatNativeDateModule,
-        MatPaginatorModule,
-        MatSelectModule,
-        MatChipsModule,
-        FormsModule,
-        HttpClientModule
-    ],
+              imports: [
+                  CommonModule,
+                  MatIconModule,
+                  MatButtonModule,
+                  MatTooltipModule,
+                  MatExpansionModule,
+                  MatFormFieldModule,
+                  MatDatepickerModule,
+                  MatInputModule,
+                  MatNativeDateModule,
+                  MatPaginatorModule,
+                  MatSelectModule,
+                  MatChipsModule,
+                  FormsModule,
+                  HttpClientModule,
+                  MatTabsModule
+              ],
   providers:[
     TabContentService
   ],

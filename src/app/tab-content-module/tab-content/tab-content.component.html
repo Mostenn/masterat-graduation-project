@@ -1,83 +1,92 @@
 <div class="tab-content-container">
-  <div style="padding: 10px">
-    <mat-accordion class="example-headers-align">
+    <div style="padding: 10px">
+      <mat-accordion class="example-headers-align">
 
-      <div (ngModel)="tasks" *ngFor="let task of tasks" >
-        <!-- header of task-->
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <span class="task-creator">{{task.creator.fname}}<br/>{{task.creator.lname}}</span>
-            </mat-panel-title>
+          <!-- header of task-->
+          <mat-expansion-panel hideToggle *ngFor="let task of tasks" [ngStyle]="{'border-color': task.color.toString()}" (afterCollapse)="editedBy = false">
+            <mat-expansion-panel-header style="height: 40px;">
+              <mat-panel-title>
+                <span class="task-creator">
+                    <mat-icon>account_circle</mat-icon>
+                </span>
+              </mat-panel-title>
 
-            <mat-panel-description>{{task.description}}</mat-panel-description>
+              <mat-panel-description><strong>{{task.description.substring(0,40) + (task.description.length > 40 ? '...' : '')}}</strong></mat-panel-description>
 
-            <!-- TODO if panel is expanded hide chips and show items in inner area -->
-            <mat-chip-list>
-              <mat-chip class="chip-data-info" color="accent" selected>{{task.status.value}}</mat-chip>
-              <mat-chip class="chip-data-info" color="warn" selected>{{task.executor.fname}} {{task.creator.lname}}</mat-chip>
-              <mat-chip class="chip-data-info" color="primary" selected>{{task.taskType.value}}</mat-chip>
-             </mat-chip-list>
-             <mat-icon class="panel-header-icon">import_export</mat-icon>
-          </mat-expansion-panel-header>
-        <!-- END header of task-->
+              <!-- TODO if panel is expanded hide chips and show items in inner area -->
+              <mat-chip-list>
+                <mat-chip class="chip-data-info" color="accent" selected>{{task.status.value}}</mat-chip>
+                <mat-chip class="chip-data-info" color="warn" selected>{{task.executor.fname}} {{task.creator.lname}}</mat-chip>
+                <mat-chip class="chip-data-info" color="primary" selected>{{task.taskType.value}}</mat-chip>
+              </mat-chip-list>
+              <mat-icon class="panel-header-icon">import_export</mat-icon>
+            </mat-expansion-panel-header>
+            <!--         END header of task   -->
 
-<!--         Inner content of task-->
-          <div class="full-width">
-            <div class="align-right">
-              <button mat-raised-button color="warn" aria-label="Edit Task">
-                <mat-icon>edit</mat-icon><span style="padding-left: 1em;">Edit Task</span>
-              </button>
+            <!--         Inner content of task    -->
+            <div class="full-width" >
+              <div class="align-right">
+                <button mat-raised-button color="warn" aria-label="Edit Task" (click)="runEdit(task)" [disabled]="task.status.label == 3 || task.status.label == 6">
+                  <mat-icon>edit</mat-icon>
+                  <span style="padding-left: 1em;">Edit Task</span>
+                </button>
+              </div>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Created Date</mat-label>
+                <input [disabled]="true" matInput [matDatepicker]="createdAt" [(ngModel)]="task.createdAt">
+                <mat-datepicker-toggle matSuffix [for]="createdAt"></mat-datepicker-toggle>
+                <mat-datepicker #createdAt></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Estimated Date</mat-label>
+                <input [disabled]="!editedBy" matInput [matDatepicker]="estimated" [(ngModel)]="task.estimated">
+                <mat-datepicker-toggle matSuffix [for]="estimated"></mat-datepicker-toggle>
+                <mat-datepicker #estimated></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field style="margin: 0 20px;">
+                <mat-label>Selected status</mat-label>
+                <mat-select [disabled]="!editedBy" [(ngModel)]="task.status.label">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let status of statuses" [value]="status.label" [disabled]="status.value == 'Closed'">
+                    {{status.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field style="margin: 0 20px;">
+                <mat-label>Selected task type</mat-label>
+                <mat-select [disabled]="!editedBy" [(ngModel)]="task.taskType.label">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let taskType of taskTypes" [value]="taskType.label">
+                    {{taskType.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
             </div>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Created Date</mat-label>
-              <input [disabled]="editedBy" matInput [matDatepicker]="createdAt" [value]="task.createdAt">
-              <mat-datepicker-toggle matSuffix [for]="createdAt"></mat-datepicker-toggle>
-              <mat-datepicker #createdAt></mat-datepicker>
-            </mat-form-field>
+            <div class="full-width no-resize">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Task Description</mat-label>
+                <textarea [disabled]="!editedBy" matInput rows="7" [(ngModel)]="task.description"></textarea>
+              </mat-form-field>
+            </div>
+            <!--  End Inner content of task-->
 
-            <mat-form-field appearance="outline">
-              <mat-label>Created Date</mat-label>
-              <input [disabled]="editedBy" matInput [matDatepicker]="estimated" [value]="task.estimated">
-              <mat-datepicker-toggle matSuffix [for]="estimated"></mat-datepicker-toggle>
-              <mat-datepicker #estimated></mat-datepicker>
-            </mat-form-field>
+            <!-- Action Btns -->
+            <mat-action-row>
+              <button mat-button color="accent" *ngIf="editedBy" (click)="saveEditedTask(editedTask)">Save changes</button>
+              <button mat-button color="warn" (click)="completeTask(task)">Complete</button>
+              <button mat-button color="primary" (click)="commentTask()">Comment</button>
+            </mat-action-row>
+            <!-- End Inner content of task-->
 
-            <span style="margin: 0 20px;">Selected Status - {{task.status.value}}</span>
-            <!-- TODO think about when load statuses
-            <mat-form-field>
-              <mat-label>Favorite food</mat-label>
-              <mat-select [(value)]="task.status.value">
-                <mat-option *ngFor="let status of statuses" [value]="statuses">
-                  {{status.value}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>-->
+          </mat-expansion-panel>
 
-          </div>
+      </mat-accordion>
+    </div>
 
-          <div class="full-width no-resize">
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Task Description</mat-label>
-              <textarea matInput rows="7" [value]="task.description"></textarea>
-            </mat-form-field>
-          </div>
-          <!--  End Inner content of task-->
-
-          <!-- Action Btns -->
-              <mat-action-row>
-                <button mat-button color="warn" *ngIf="editedBy" (click)="saveEditedTask()">Complete</button>
-                <button mat-button color="warn" (click)="completeTask()">Complete</button>
-                <button mat-button color="primary" (click)="commentTask()">Comment</button>
-              </mat-action-row>
-        <!-- End Inner content of task-->
-
-        </mat-expansion-panel>
-      </div>
-
-
-    </mat-accordion>
   </div>
-
-</div>

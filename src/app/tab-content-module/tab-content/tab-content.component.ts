@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {SimpleDto, TaskDto} from "../task-dto.model";
-import {TabContentService} from "./tab-content.service";
-import { Router } from "@angular/router";
+import {Component, EventEmitter, OnInit} from '@angular/core';
+import { SimpleDto, TaskDto } from "../task-dto.model";
+import { TabContentService } from "./tab-content.service";
+import {Task} from "protractor/built/taskScheduler";
 
 @Component({
   selector: 'app-tab-content',
@@ -14,10 +14,13 @@ export class TabContentComponent implements OnInit {
   tasks: TaskDto[];
   statuses: SimpleDto[];
   selectedStatus: SimpleDto;
+  taskTypes: SimpleDto[];
+  taskType: SimpleDto;
   editedBy: boolean = false;
+  editedTask: any;
 
 
-  constructor(private service: TabContentService, private Router: Router) {
+  constructor(private service: TabContentService) {
   }
 
   ngOnInit() {
@@ -27,29 +30,45 @@ export class TabContentComponent implements OnInit {
   load(){
     this.service.loadTasks().subscribe(data => {
       this.tasks = data;
-      // console.log(data);
     }, error => {
       console.error(`Loading error: ${error}`);
     });
 
-    this.service.loadStatuses().subscribe(data =>{
+    this.service.loadStatuses().subscribe(data => {
       this.statuses = data;
-      // console.log(data);
+    }, error => {
+      console.error(`Loading error: ${error}`);
+    });
+
+    this.service.loadTaskTypes().subscribe(data => {
+      this.taskTypes = data;
     }, error => {
       console.error(`Loading error: ${error}`);
     });
 
   }
 
-  completeTask() {
-
+  completeTask(task: any) {
+    console.log(task);
+    task.status.label = 6;
+    this.saveEditedTask(task);
   }
 
   commentTask() {
 
   }
 
-  saveEditedTask() {
+  saveEditedTask( editedTask: any) {
+    editedTask.createdAt = new Date(editedTask.createdAt).toISOString().substring(0,10);
+    this.service.saveTask(editedTask).subscribe(data => {
+      // console.log(data);
+    }, error => {
+      console.error(`Loading error: ${error}`);
+    });
+  }
 
+  runEdit(task: TaskDto){
+    this.editedTask = task;
+    this.editedBy = !this.editedBy;
   }
 }
