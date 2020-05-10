@@ -57,7 +57,7 @@ public class TaskEntity implements Serializable {
 
     public TaskEntity(TaskView tv) {
         this.id = tv.getId();
-        this.status = new TaskStatusEntity(tv.getStatus());
+        this.status = tv.getStatus() != null ? new TaskStatusEntity(tv.getStatus()) : new TaskStatusEntity();
         this.taskDescription = tv.getDescription();
         this.creator = new UserEntity(tv.getCreator());
         this.executor = new UserEntity(tv.getExecutor());

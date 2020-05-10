@@ -1,6 +1,9 @@
 package com.sgatman.taskManager.entities;
 
 import com.sgatman.taskManager.Views.SimpleView;
+
+import java.io.Serializable;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +15,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Table(name = "task_status", schema = "task_data")
-public class TaskStatusEntity {
+public class TaskStatusEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

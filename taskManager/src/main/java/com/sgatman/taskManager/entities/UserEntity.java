@@ -40,6 +40,12 @@ public class UserEntity implements Serializable {
     @Column(name = "role")
     private Integer role;
 
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
     public UserEntity(UserView userView){
         this.id = userView.getId();
         this.firstName = userView.getFName();

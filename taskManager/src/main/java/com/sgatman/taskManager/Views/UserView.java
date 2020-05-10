@@ -2,8 +2,10 @@ package com.sgatman.taskManager.Views;
 
 import com.sgatman.taskManager.entities.UserEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class UserView {
 
     private Long id;
